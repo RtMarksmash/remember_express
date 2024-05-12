@@ -2,12 +2,14 @@ const express = require('express');
 const config = require('./config');
 const app = express();
 const server = require('http').Server(app);
+const morgan = require('morgan')
 
 
 
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: false }));
+app.use(morgan('dev'))
 
 app.use((req, res, next) => {
     console.log(`route: ${req.url} , method: ${req.method}`)
