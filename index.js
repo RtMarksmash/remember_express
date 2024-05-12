@@ -3,8 +3,9 @@ const config = require('./config');
 const app = express();
 const server = require('http').Server(app);
 const morgan = require('morgan')
+const path = require('path');
 
-
+app.set('case sensitive routing', true) // sensibilidad en el ending point con respecto a mayusculas y minusculas
 
 app.use(express.json());
 app.use(express.text());
@@ -67,6 +68,9 @@ app.get('/user/:username/photo', (req, res) => {
 
     res.send('usuario no se encuentra')
 })
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 server.listen(config.port, () => {
