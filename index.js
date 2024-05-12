@@ -15,6 +15,15 @@ app.use((req, res, next) => {
     next()
 });
 
+app.use((req, res, next) => {
+    console.log(req.query.login)
+    if (req.query.login === 'mario') {
+        return next()
+    } else {
+        res.send('no autorizado')
+    }
+});
+
 console.log('hola mundo');
 
 app.get('/', (req, res) => {
