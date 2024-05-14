@@ -9,7 +9,9 @@ function routesCliente(app) {
     app.post('/cliente', (req, res) => {
         console.log(req.body)
         res.send('cliente nuevo')
+
     });
+
 
 };
 

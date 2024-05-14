@@ -22,4 +22,16 @@ router.get('/user/:username/photo', (req, res) => {
 })
 
 
+router.get('/about', (req, res) => {
+
+    const title = 'hola mi primera pagina con express me llamo mario'
+    res.render('index', { title: title })
+
+})
+
+
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard')
+})
+
 module.exports = router
