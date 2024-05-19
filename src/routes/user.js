@@ -1,3 +1,4 @@
+const axios = require('axios');
 const express = require('express');
 
 const router = express.Router();
@@ -32,6 +33,16 @@ router.get('/about', (req, res) => {
 
 router.get('/dashboard', (req, res) => {
     res.render('dashboard')
+})
+
+
+router.get('/post', async(req, res) => {
+
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+
+    res.render('post', {
+        post: response.data
+    })
 })
 
 module.exports = router
